@@ -41,6 +41,14 @@ void JitX64Engine::Run(const ShaderSetup& setup, UnitState& state) const {
     MICROPROFILE_SCOPE(GPU_Shader);
 
     const JitShader* shader = static_cast<const JitShader*>(setup.engine_data.cached_shader);
+#ifdef __AVX__
+  #if defined(_MSC_VER)
+    #include <intrin.h>
+  #elif defined(__GNUC__)
+    #include <x86intrin.h>
+  #endif
+    _mm256_zeroupper();
+#endif
     shader->Run(setup, state, setup.engine_data.entry_point);
 }
 
