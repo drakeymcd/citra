@@ -166,3 +166,8 @@ endif()
 
 find_package(Threads)
 target_link_libraries(cryptopp PRIVATE ${CMAKE_THREAD_LIBS_INIT})
+if(MSVC)
+    add_definitions(/GR)
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "GCC" OR "Clang")
+    string(REPLACE " -fno-rtti" " " CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
+endif()
