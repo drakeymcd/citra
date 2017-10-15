@@ -237,7 +237,7 @@ endif()
 if (ENABLE_WEB_SERVICE)
     add_definitions(-DENABLE_WEB_SERVICE)
 endif()
-
+include_directories(./externals/cryptopp)
 # Platform-specific library requirements
 # ======================================
 
