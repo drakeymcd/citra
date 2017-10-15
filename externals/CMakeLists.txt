@@ -8,7 +8,7 @@ add_library(catch-single-include INTERFACE)
 target_include_directories(catch-single-include INTERFACE catch/single_include)
 
 # Crypto++
-add_subdirectory(cryptopp)
+#add_subdirectory(cryptopp)
 
 # Dynarmic
 # Dynarmic will skip defining xbyak if it's already defined, we then define it below
